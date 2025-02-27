@@ -9,6 +9,12 @@ name: app
 # to find the supported versions for the 'php' type.
 type: 'php:8.4'
 
+# Indicate to use Composer 2 (leave out if you want Composer 1)
+# See how without Composer: https://docs.platform.sh/guides/wordpress/vanilla.html
+dependencies:
+    php:
+        composer/composer: '^2'
+
 # The following block defines a single writable directory, 'web/uploads'
 # The 'source' specifies where the writable mount is. The 'local' source
 # indicates that the mount point will point to a local directory on the
@@ -21,6 +27,15 @@ mounts:
 
 # The size of the persistent disk of the application (in MB).
 disk: 256
+
+# Your app's configuration when it's exposed to the web.
+web:
+    locations:
+        "/":
+            # The public directory of the app, relative to its root.
+            root: "web"
+            # The front-controller script to send non-static requests to.
+            passthru: "/index.php"
 
 # The relationships of the application with services or other applications.
 #
