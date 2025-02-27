@@ -9,4 +9,6 @@
         <p>Hello~</p>
     </body>
 
+    <?php echo 'whateva'; ?>
+
 </html>
