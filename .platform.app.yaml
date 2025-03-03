@@ -44,3 +44,4 @@ web:
 # side is in the form '<service name>:<endpoint name>'.
 relationships:
     oracle-mysql: 'oracle-mysql:mysql'
+    mariadb:
