@@ -79,7 +79,7 @@ TABLE;
 <html>
 
     <head>
-        <title>Hello world</title>
+        <title>Hello world test</title>
     </head>
 
     <body>
