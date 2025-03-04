@@ -10,6 +10,7 @@ class ComposerStaticInitea4ccf45160d49b2e24063883ef0d456
         'P' => 
         array (
             'Psr\\Log\\' => 8,
+            'Platformsh\\ConfigReader\\' => 24,
         ),
         'M' => 
         array (
@@ -21,6 +22,10 @@ class ComposerStaticInitea4ccf45160d49b2e24063883ef0d456
         'Psr\\Log\\' => 
         array (
             0 => __DIR__ . '/..' . '/psr/log/src',
+        ),
+        'Platformsh\\ConfigReader\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/platformsh/config-reader/src',
         ),
         'Monolog\\' => 
         array (

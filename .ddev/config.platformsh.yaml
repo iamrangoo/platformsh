@@ -1,0 +1,43 @@
+# #ddev-generated
+# Generated configuration based on platform.sh project configuration
+disable_settings_management: true
+php_version: 8.4
+composer_version: "2"
+database:
+  type: mysql
+  version: 8.0
+docroot: web
+webimage_extra_packages:
+- figlet
+
+
+
+
+
+
+web_environment:
+- "PLATFORM_RELATIONSHIPS=ewoib3JhY2xlLW15c3FsIjogWwogIHsKICAgICJ1c2VybmFtZSI6ICJkYiIsCiAgICAic2NoZW1lIjogIm15c3FsIiwKICAgICJzZXJ2aWNlIjogIm9yYWNsZS1teXNxbCIsCiAgICAiZnJhZ21lbnQiOiBudWxsLAogICAgImlwIjogIjI1NS4yNTUuMjU1LjI1NSIsCiAgICAiaG9zdG5hbWUiOiAiZGIiLAogICAgInB1YmxpYyI6IGZhbHNlLAogICAgImNsdXN0ZXIiOiAiZGRldi1kdW1teS1jbHVzdGVyIiwKICAgICJob3N0IjogImRiIiwKICAgICJyZWwiOiAibXlzcWwiLAogICAgInF1ZXJ5IjogewogICAgICAiaXNfbWFzdGVyIjogdHJ1ZQogICAgfSwKICAgICJwYXRoIjogImRiIiwKICAgICJwYXNzd29yZCI6ICJkYiIsCiAgICAidHlwZSI6ICJteXNxbDo4LjAiLAogICAgInBvcnQiOiAzMzA2LAogICAgImhvc3RfbWFwcGVkIjogZmFsc2UKICB9Cl0gfQo="
+- "PLATFORM_APP_DIR=/var/www/html"
+- "PLATFORM_PROJECT_ENTROPY=0387582eeda815858ce0bcb57132121543a4dabfea088620103aec6736024536"
+# Consider commit hash for PLATFORM_TREE_ID
+- "PLATFORM_TREE_ID=2dc356f2fea13ef683f9adc5fc5bd28e05ad992a"
+- "PLATFORM_CACHE_DIR=/mnt/ddev-global-cache/ddev-platformsh/static"
+- "PLATFORM_ROUTES=ewoiaHR0cHM6Ly9zdGF0aWMuZGRldi5zaXRlLyI6IHsKICAgICJwcmltYXJ5IjogdHJ1ZSwKICAgICJpZCI6IG51bGwsCiAgICAicHJvZHVjdGlvbl91cmwiOiAiPG5vIHZhbHVlPiIsCiAgICAiYXR0cmlidXRlcyI6IHt9LAogICAgInVwc3RyZWFtIjogImFwcDpodHRwIiwKICAgICJ0eXBlIjogInVwc3RyZWFtIiwKICAgICJvcmlnaW5hbF91cmwiOiAiPG5vIHZhbHVlPiIKICB9LCAKImh0dHBzOi8vc3RhdGljLmRkZXYuc2l0ZS8iOiB7CiAgICAicHJpbWFyeSI6IHRydWUsCiAgICAiaWQiOiBudWxsLAogICAgInByb2R1Y3Rpb25fdXJsIjogIjxubyB2YWx1ZT4iLAogICAgImF0dHJpYnV0ZXMiOiB7fSwKICAgICJ1cHN0cmVhbSI6ICI8bm8gdmFsdWU+IiwKICAgICJ0eXBlIjogInJlZGlyZWN0IiwKICAgICJvcmlnaW5hbF91cmwiOiAiPG5vIHZhbHVlPiIKICB9IH0K"
+- "PLATFORM_VARIABLES=e30="
+
+
+
+hooks:
+  post-start:
+  - exec: mkdir -p ${PLATFORM_CACHE_DIR} || true
+  - exec: '[ ! -z "${PLATFORMSH_CLI_TOKEN:-}" ] && (platform ssh-cert:load  -y || true)'
+
+
+
+
+
+
+
+
+
+

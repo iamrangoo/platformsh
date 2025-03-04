@@ -1,6 +1,6 @@
 name: static
 type: php
-docroot: ""
+docroot: web
 php_version: "8.3"
 webserver_type: nginx-fpm
 xdebug_enabled: false
@@ -11,7 +11,10 @@ database:
     version: "10.11"
 use_dns_when_possible: true
 composer_version: "2"
-web_environment: []
+web_environment:
+    - PLATFORM_APPLICATION_NAME=app
+    - PLATFORM_ENVIRONMENT=main
+    - PLATFORM_PROJECT=gwsfl4vu7bocy
 corepack_enable: false
 
 # Key features of DDEV's config.yaml:
