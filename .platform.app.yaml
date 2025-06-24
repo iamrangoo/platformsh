@@ -24,7 +24,7 @@ mounts:
   'web/uploads':
     source: local
     source_path: uploads
-  '/var/':
+  'var':
     source: service
     service: network-storage
     source_path: varstuff
