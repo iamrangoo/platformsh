@@ -16,3 +16,6 @@ mariadb:
 # network-storage:
 #     type: network-storage:2.0
 #     disk: 256
+
+solr:
+    disk: 256

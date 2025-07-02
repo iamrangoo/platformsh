@@ -50,3 +50,4 @@ web:
 relationships:
     oracle-mysql: 'oracle-mysql:mysql'
     mariadb:
+    solr: 
