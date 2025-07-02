@@ -31,7 +31,7 @@ mounts:
 
 
 # The size of the persistent disk of the application (in MB).
-disk: 256
+disk: 4000
 
 # Your app's configuration when it's exposed to the web.
 web:
@@ -55,7 +55,6 @@ relationships:
 hooks:
     build: |
         set -e
-
 
     deploy: |
         set -e
