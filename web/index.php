@@ -1,77 +1,57 @@
 <?php
-
 declare(strict_types=1);
 
-require_once '../vendor/autoload.php';
-
 use Platformsh\ConfigReader\Config;
+use Solarium\Client;
 
 // Create a new config object to ease reading the Platform.sh environment variables.
 // You can alternatively use getenv() yourself.
 $config = new Config();
 
-echo '<pre>' . var_export($config, true) . '</pre>';
-
-// The 'database' relationship is generally the name of primary SQL database of an application.
-// That's not required, but much of our default automation code assumes it.
-$credentials = $config->credentials('oracle-mysql');
-
-
+// Get the credentials to connect to the Solr service.
+$credentials = $config->credentials('solr');
 
 try {
-    // Connect to the database using PDO.  If using some other abstraction layer you would
-    // inject the values from $database into whatever your abstraction layer asks for.
-    $dsn = sprintf('mysql:host=%s;port=%d;dbname=%s', $credentials['host'], $credentials['port'], $credentials['path']);
-    $conn = new \PDO($dsn, $credentials['username'], $credentials['password'], [
-        // Always use Exception error mode with PDO, as it's more reliable.
-        \PDO::ATTR_ERRMODE => \PDO::ERRMODE_EXCEPTION,
-        // So we don't have to mess around with cursors and unbuffered queries by default.
-        \PDO::MYSQL_ATTR_USE_BUFFERED_QUERY => TRUE,
-        // Make sure MySQL returns all matched rows on update queries including
-        // rows that actually didn't have to be updated because the values didn't
-        // change. This matches common behavior among other database systems.
-        \PDO::MYSQL_ATTR_FOUND_ROWS => TRUE,
-    ]);
 
-    // Creating a table.
-    $sql = "CREATE TABLE People (
-    id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-    name VARCHAR(30) NOT NULL,
-    city VARCHAR(30) NOT NULL
-    )";
-    $conn->query($sql);
+    $config = [
+        'endpoint' => [
+            'localhost' => [
+                'host' => $credentials['host'],
+                'port' => $credentials['port'],
+                'path' => "/" . $credentials['path'],
+            ]
+        ]
+    ];
 
-    // Insert data.
-    $sql = "INSERT INTO People (name, city) VALUES
-        ('Neil Armstrong', 'Moon'),
-        ('Buzz Aldrin', 'Glen Ridge'),
-        ('Sally Ride', 'La Jolla');";
-    $conn->query($sql);
+    $client = new Client($config);
 
-    // Show table.
-    $sql = "SELECT * FROM People";
-    $result = $conn->query($sql);
-    $result->setFetchMode(\PDO::FETCH_OBJ);
+    // Add a document
+    $update = $client->createUpdate();
 
-    if ($result) {
-        print <<<TABLE
-<table>
-<thead>
-<tr><th>Name</th><th>City</th></tr>
-</thead>
-<tbody>
-TABLE;
-        foreach ($result as $record) {
-            printf("<tr><td>%s</td><td>%s</td></tr>\n", $record->name, $record->city);
-        }
-        print "</tbody>\n</table>\n";
-    }
+    $doc1 = $update->createDocument();
+    $doc1->id = 123;
+    $doc1->name = 'Valentina Tereshkova';
 
-    // Drop table
-    $sql = "DROP TABLE People";
-    $conn->query($sql);
+    $update->addDocuments(array($doc1));
+    $update->addCommit();
 
-} catch (\Exception $e) {
+    $result = $client->update($update);
+    print "Adding one document. Status (0 is success): " .$result->getStatus(). "<br />\n";
+
+    // Select one document
+    $query = $client->createQuery($client::QUERY_SELECT);
+    $resultset = $client->execute($query);
+    print  "Selecting documents (1 expected): " .$resultset->getNumFound() . "<br />\n";
+
+    // Delete one document
+    $update = $client->createUpdate();
+
+    $update->addDeleteById(123);
+    $update->addCommit();
+    $result = $client->update($update);
+    print "Deleting one document. Status (0 is success): " .$result->getStatus(). "<br />\n";
+
+} catch (Exception $e) {
     print $e->getMessage();
 }
 ?>
