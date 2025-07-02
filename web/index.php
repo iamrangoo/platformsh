@@ -16,7 +16,7 @@ $config = new Config();
 $credentials = $config->credentials('solr');
 
 try {
-    
+
     $adapter = new Curl();
     $dispatcher = new EventDispatcher();
     $config = [
@@ -29,7 +29,7 @@ try {
         ]
     ];
 
-    $client = new Client($adapter, $eventDispatcher, $config);
+    $client = new Client($adapter, $dispatcher, $config);
 
     // Add a document
     $update = $client->createUpdate();
