@@ -51,3 +51,12 @@ relationships:
     oracle-mysql: 'oracle-mysql:mysql'
     mariadb:
     solr:
+
+hooks:
+    build: |
+        set -e
+
+
+    deploy: |
+        set -e
+        composer install
