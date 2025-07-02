@@ -5,6 +5,8 @@ require_once '../vendor/autoload.php';
 
 use Platformsh\ConfigReader\Config;
 use Solarium\Client;
+use Solarium\Core\Client\Adapter\Curl;
+use Symfony\Component\EventDispatcher\EventDispatcher; 
 
 // Create a new config object to ease reading the Platform.sh environment variables.
 // You can alternatively use getenv() yourself.
@@ -14,7 +16,9 @@ $config = new Config();
 $credentials = $config->credentials('solr');
 
 try {
-
+    
+    $adapter = new Curl();
+    $dispatcher = new EventDispatcher();
     $config = [
         'endpoint' => [
             'localhost' => [
@@ -25,7 +29,7 @@ try {
         ]
     ];
 
-    $client = new Client($config);
+    $client = new Client($adapter, $eventDispatcher, $config);
 
     // Add a document
     $update = $client->createUpdate();

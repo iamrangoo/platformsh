@@ -14,6 +14,7 @@ class ComposerStaticInitea4ccf45160d49b2e24063883ef0d456
         'S' => 
         array (
             'Symfony\\Contracts\\EventDispatcher\\' => 34,
+            'Symfony\\Component\\EventDispatcher\\' => 34,
             'Solarium\\' => 9,
         ),
         'P' => 
@@ -38,6 +39,10 @@ class ComposerStaticInitea4ccf45160d49b2e24063883ef0d456
         'Symfony\\Contracts\\EventDispatcher\\' => 
         array (
             0 => __DIR__ . '/..' . '/symfony/event-dispatcher-contracts',
+        ),
+        'Symfony\\Component\\EventDispatcher\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/symfony/event-dispatcher',
         ),
         'Solarium\\' => 
         array (
