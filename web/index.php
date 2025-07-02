@@ -25,7 +25,7 @@ try {
                 'host' => $credentials['host'],
                 'port' => $credentials['port'],
                 'path' => '/',
-                'collection' => 'main'
+                'collection' => 'collection1'
             ]
         ]
     ];
