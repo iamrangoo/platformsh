@@ -24,7 +24,8 @@ try {
             'localhost' => [
                 'host' => $credentials['host'],
                 'port' => $credentials['port'],
-                'path' => "/" . $credentials['path'],
+                'path' => '/',
+                'collection' => 'main'
             ]
         ]
     ];
