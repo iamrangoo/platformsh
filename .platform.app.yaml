@@ -58,4 +58,4 @@ hooks:
 
     deploy: |
         set -e
-        composer install
+#        composer install
