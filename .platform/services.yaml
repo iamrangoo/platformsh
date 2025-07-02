@@ -25,9 +25,9 @@ searchsolr_v1:
   type: solr:9.6
   disk: 256
   configuration:
-    cores:
-      maincore:
-        conf_dir: !archive "solr/"
+#    cores:
+#      maincore:
+#       conf_dir: !archive "solr/"
     endpoints:
       main:
         core: maincore
