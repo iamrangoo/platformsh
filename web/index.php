@@ -13,7 +13,7 @@ use Symfony\Component\EventDispatcher\EventDispatcher;
 $config = new Config();
 
 // Get the credentials to connect to the Solr service.
-$credentials = $config->credentials('solrsearch');
+$credentials = $config->credentials('solr');
 
 try {
 
