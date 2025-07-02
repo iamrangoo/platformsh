@@ -18,4 +18,5 @@ mariadb:
 #     disk: 256
 
 solr:
+    type: solr:9.6
     disk: 256
