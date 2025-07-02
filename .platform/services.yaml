@@ -17,6 +17,17 @@ mariadb:
 #     type: network-storage:2.0
 #     disk: 256
 
-solr:
-    type: solr:9.6
-    disk: 256
+# solr:
+#     type: solr:9.6
+#     disk: 256
+
+searchsolr_v1:
+  type: solr:9.6
+  disk: 256
+  configuration:
+    cores:
+      maincore:
+        conf_dir: !archive "solr/"
+    endpoints:
+      main:
+        core: maincore

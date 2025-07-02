@@ -50,7 +50,7 @@ web:
 relationships:
     oracle-mysql: 'oracle-mysql:mysql'
     mariadb:
-    solr:
+    solrsearch: "searchsolr_v1:main"
 
 hooks:
     build: |
