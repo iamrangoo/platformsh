@@ -13,6 +13,6 @@ mariadb:
     type: mariadb:11.4
     disk: 256
 
-# network-storage:
-#     type: network-storage:2.0
-#     disk: 256
+network-storage:
+    type: network-storage:2.0
+    disk: 256

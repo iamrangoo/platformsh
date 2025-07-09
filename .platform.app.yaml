@@ -24,10 +24,10 @@ mounts:
   'web/uploads':
     source: local
     source_path: uploads
-  # 'var':
-  #   source: service
-  #   service: network-storage
-  #   source_path: varstuff
+  'var':
+    source: service
+    service: network-storage
+    source_path: varstuff
 
 
 # The size of the persistent disk of the application (in MB).
