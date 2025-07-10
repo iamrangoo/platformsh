@@ -6,3 +6,7 @@
 "https://{default}/":
     type: redirect
     to: "https://www.{default}/"
+
+"https://blueberrycloud.ca/":
+    type: redirect
+    to: "https://www.blueberrycloud.ca/"
