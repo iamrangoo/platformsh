@@ -7,6 +7,10 @@
     type: redirect
     to: "https://www.{default}/"
 
-"https://bbc.new-branch-5uumuga-gwsfl4vu7bocy.eu-3.platformsh.site/":
+"https://bbc.new-branch-5uumuga-gwsfl4vu7bocy.eu-3.platformsh.site":
+    type: redirect
+    to: "https://www.maz.ca/"
+
+"https://blueberrycloud.ca":
     type: redirect
     to: "https://www.blueberrycloud.ca/"
