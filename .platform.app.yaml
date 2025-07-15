@@ -51,8 +51,8 @@ web:
                 # @see https://developer.chrome.com/blog/private-prefetch-proxy/
                 # @see https://webmasters.stackexchange.com/questions/138033/what-is-well-known-traffic-advice-directory
                 '^\.well-known/traffic-advice$':
-                headers:
-                    Content-Type: application/trafficadvice+json
+                    headers:
+                        Content-Type: application/trafficadvice+json
 
 # The relationships of the application with services or other applications.
 #
