@@ -1,79 +1,21 @@
 <?php
-declare(strict_types=1);
 
-require_once '../vendor/autoload.php';
+$valid_passwords = array ("mario" => "carbonell");
+$valid_users = array_keys($valid_passwords);
 
-use Platformsh\ConfigReader\Config;
-use Solarium\Client;
-use Solarium\Core\Client\Adapter\Curl;
-use Symfony\Component\EventDispatcher\EventDispatcher; 
+$user = $_SERVER['PHP_AUTH_USER'];
+$pass = $_SERVER['PHP_AUTH_PW'];
 
-// Create a new config object to ease reading the Platform.sh environment variables.
-// You can alternatively use getenv() yourself.
-$config = new Config();
+$validated = (in_array($user, $valid_users)) && ($pass == $valid_passwords[$user]);
 
-// Get the credentials to connect to the Solr service.
-$credentials = $config->credentials('solr');
-
-try {
-
-    $adapter = new Curl();
-    $dispatcher = new EventDispatcher();
-    $config = [
-        'endpoint' => [
-            'localhost' => [
-                'host' => $credentials['host'],
-                'port' => $credentials['port'],
-                'path' => '/',
-                'collection' => 'collection1'
-            ]
-        ]
-    ];
-
-    $client = new Client($adapter, $dispatcher, $config);
-
-    // Add a document
-    $update = $client->createUpdate();
-
-    $doc1 = $update->createDocument();
-    $doc1->id = 123;
-    $doc1->name = 'Valentina Tereshkova';
-
-    $update->addDocuments(array($doc1));
-    $update->addCommit();
-
-    $result = $client->update($update);
-    print "Adding one document. Status (0 is success): " .$result->getStatus(). "<br />\n";
-
-    // Select one document
-    $query = $client->createQuery($client::QUERY_SELECT);
-    $resultset = $client->execute($query);
-    print  "Selecting documents (1 expected): " .$resultset->getNumFound() . "<br />\n";
-
-    // Delete one document
-    $update = $client->createUpdate();
-
-    $update->addDeleteById(123);
-    $update->addCommit();
-    $result = $client->update($update);
-    print "Deleting one document. Status (0 is success): " .$result->getStatus(). "<br />\n";
-
-} catch (Exception $e) {
-    print $e->getMessage();
+if (!$validated) {
+  header('WWW-Authenticate: Basic realm="My Realm"');
+  header('HTTP/1.0 401 Unauthorized');
+  die ("Not authorized");
 }
+
+// If arrives here, is a valid user.
+echo "<p>Welcome $user.</p>";
+echo "<p>Congratulation, you are into the system.</p>";
+
 ?>
-
-<html>
-
-    <head>
-        <title>Hello world test</title>
-    </head>
-
-    <body>
-        <h1>Hello world</h1>
-        <p>Hello~</p>
-    </body>
-
-    <?php echo 'whateva'; ?>
-
-</html>
