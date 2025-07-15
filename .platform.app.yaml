@@ -52,7 +52,7 @@ web:
                 # @see https://webmasters.stackexchange.com/questions/138033/what-is-well-known-traffic-advice-directory
                 '^\.well-known/traffic-advice$':
                     headers:
-                        Content-Type: 'application/trafficadvice+json'
+                        Content-Type: "application/trafficadvice+json; charset=utf-8"
 
 # The relationships of the application with services or other applications.
 #
