@@ -1,5 +1,7 @@
 <?php
 
+error_reporting(0);
+
 $valid_passwords = array ("mario" => "carbonell");
 $valid_users = array_keys($valid_passwords);
 
@@ -17,4 +19,3 @@ if (!$validated) {
 // If arrives here, is a valid user.
 echo "<p>Welcome $user.</p>";
 echo "<p>Congratulation, you are into the system.</p>";
-
