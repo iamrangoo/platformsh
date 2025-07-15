@@ -41,6 +41,9 @@ web:
             root: "web"
             # The front-controller script to send non-static requests to.
             passthru: "/index.php"
+        '/.well-known':
+            # It appears we serve some static files from this location.
+            allow: true
 
 # The relationships of the application with services or other applications.
 #
