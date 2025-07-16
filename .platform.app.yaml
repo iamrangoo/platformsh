@@ -31,7 +31,7 @@ mounts:
 
 
 # The size of the persistent disk of the application (in MB).
-disk: 256
+disk: 4000
 
 # Your app's configuration when it's exposed to the web.
 web:
@@ -41,6 +41,18 @@ web:
             root: "web"
             # The front-controller script to send non-static requests to.
             passthru: "/index.php"
+        '/.well-known':
+            root: '.well-known'
+            # It appears we serve some static files from this location.
+            allow: true
+            rules:
+                # From .htaccess,
+                # Serve traffic-advice as JSON
+                # @see https://developer.chrome.com/blog/private-prefetch-proxy/
+                # @see https://webmasters.stackexchange.com/questions/138033/what-is-well-known-traffic-advice-directory
+                '^\.well-known/traffic-advice$':
+                    headers:
+                        Content-Type: "application/trafficadvice+json; charset=utf-8"
 
 # The relationships of the application with services or other applications.
 #
@@ -50,3 +62,12 @@ web:
 relationships:
     oracle-mysql: 'oracle-mysql:mysql'
     mariadb:
+#    solr:
+
+hooks:
+    build: |
+        set -e
+
+    deploy: |
+        set -e
+#        composer install
