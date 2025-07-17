@@ -43,7 +43,7 @@ web:
             passthru: "/index.php"
             allow: true
             rules:
-                '^hello.html$':
+                '^/hello.html$':
                     allow: false
         '/.well-known':
             root: '.well-known'
