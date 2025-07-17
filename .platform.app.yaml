@@ -41,6 +41,13 @@ web:
             root: "web"
             # The front-controller script to send non-static requests to.
             passthru: "/index.php"
+            rules:
+                # From .htaccess,
+                # Serve traffic-advice as JSON
+                # @see https://developer.chrome.com/blog/private-prefetch-proxy/
+                # @see https://webmasters.stackexchange.com/questions/138033/what-is-well-known-traffic-advice-directory
+                '^hello.html$':
+                    allow: false
         '/.well-known':
             root: '.well-known'
             # It appears we serve some static files from this location.
