@@ -17,7 +17,11 @@
 // }
 
 // If arrives here, is a valid user.
-echo "<p>Welcome $user.</p>";
-echo "<p>Congratulation, you are into the system.</p>";
+// echo "<p>Welcome $user.</p>";
+// echo "<p>Congratulation, you are into the system.</p>";
 
 //test
+
+foreach (getallheaders() as $name => $value) {
+    echo "$name: $value\n";
+}
