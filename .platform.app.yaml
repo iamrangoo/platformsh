@@ -43,8 +43,8 @@ web:
             passthru: "/index.php"
             allow: false
             rules:
-                #'\.(avif|bmp|css|eot|gif|ico|jpe?g|js|map|otf|png|svgz?|ttf|webp|woff2?|xml|xsl)$':
-                #    allow: true
+                '\.(avif|bmp|css|eot|gif|ico|jpe?g|js|map|otf|png|svgz?|ttf|webp|woff2?|xml)$':
+                    allow: true
                 # Fix nginx's broken mimetype for xsl/xslt files.
                 '\.xslt?$':
                     allow: true
