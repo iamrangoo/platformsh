@@ -41,6 +41,11 @@ web:
             root: "web"
             # The front-controller script to send non-static requests to.
             passthru: "/index.php"
+            rules:
+                # Fix nginx's broken mimetype for xsl/xslt files.
+                '\.xslt?$':
+                    headers:
+                        Content-Type: application/xslt+xml
         '/.well-known':
             root: '.well-known'
             # It appears we serve some static files from this location.
