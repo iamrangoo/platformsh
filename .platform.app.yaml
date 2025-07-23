@@ -47,6 +47,7 @@ web:
                 #    allow: true
                 # Fix nginx's broken mimetype for xsl/xslt files.
                 '\.xslt?$':
+                    allow: true
                     headers:
                         Content-Type: application/xslt+xml
         '/.well-known':
