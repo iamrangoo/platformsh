@@ -22,6 +22,8 @@
 
 //test
 
+var_dump(getenv('SOMETHING'));
+
 foreach (getallheaders() as $name => $value) {
     echo "$name: $value <br />";
 }
