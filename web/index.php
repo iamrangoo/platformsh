@@ -27,3 +27,8 @@ var_dump(getenv('SOMETHING'));
 foreach (getallheaders() as $name => $value) {
     echo "$name: $value <br />";
 }
+
+openlog("", LOG_PID, LOG_LOCAL0);
+syslog(LOG_INFO, "Operation started");
+syslog(LOG_ERR, "Operation failed");
+closelog();
