@@ -22,13 +22,19 @@
 
 //test
 
-var_dump(getenv('SOMETHING'));
+// var_dump(getenv('SOMETHING'));
 
-foreach (getallheaders() as $name => $value) {
-    echo "$name: $value <br />";
-}
+// foreach (getallheaders() as $name => $value) {
+//     echo "$name: $value <br />";
+// }
 
 openlog("", LOG_PID, LOG_LOCAL0);
 syslog(LOG_INFO, "Operation started");
 syslog(LOG_ERR, "Operation failed");
 closelog();
+
+$output=null;
+$retval=null;
+exec('whoami', $output, $retval);
+echo "Returned with status $retval and output:\n";
+print_r($output);
