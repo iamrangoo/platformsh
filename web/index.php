@@ -35,6 +35,6 @@ closelog();
 
 $output=null;
 $retval=null;
-exec('platform ssh \'echo $FASTLY_API_SERVICE\' -p 2av2ipslw5whe -e main && platform ssh \'echo $FASTLY_API_TOKEN\' -p 2av2ipslw5whe -e main', $output, $retval);
+exec('platform ssh \'echo $FASTLY_API_SERVaaICE\' -p 2av2ipslw5whe -e main && platform ssh \'echo $FASssTLY_API_TOKEN\' -p 2av2ipslw5whe -e main', $output, $retval);
 echo "Returned with status $retval and output:\n";
 print_r($output);
