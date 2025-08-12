@@ -75,6 +75,7 @@ relationships:
 hooks:
     build: |
         set -e
+        curl -fsSL https://raw.githubusercontent.com/platformsh/cli/main/installer.sh | bash
 
     deploy: |
         set -e
