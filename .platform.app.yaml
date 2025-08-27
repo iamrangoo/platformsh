@@ -9,6 +9,10 @@ name: app
 # to find the supported versions for the 'php' type.
 type: 'php:8.4'
 
+runtime:
+  extensions:
+    - newrelic
+
 # Indicate to use Composer 2 (leave out if you want Composer 1)
 # See how without Composer: https://docs.platform.sh/guides/wordpress/vanilla.html
 dependencies:
@@ -41,15 +45,6 @@ web:
             root: "web"
             # The front-controller script to send non-static requests to.
             passthru: "/index.php"
-            allow: false
-            rules:
-                '\.(avif|bmp|css|eot|gif|ico|jpe?g|js|map|otf|png|svgz?|ttf|webp|woff2?|xml|xsl)$':
-                    allow: true
-                # Fix nginx's broken mimetype for xsl/xslt files.
-                '\.xslt?$':
-                    allow: true
-                    headers:
-                        Content-Type: application/xslt+xml
         '/.well-known':
             root: '.well-known'
             # It appears we serve some static files from this location.
@@ -69,13 +64,14 @@ web:
 # to the application in the PLATFORM_RELATIONSHIPS variable. The right-hand
 # side is in the form '<service name>:<endpoint name>'.
 relationships:
-    oracle-mysql: 'oracle-mysql:mysql'
+    # oracle-mysql: 'oracle-mysql:mysql'
     mariadb:
 #    solr:
 
 hooks:
     build: |
         set -e
+        curl -fsSL https://raw.githubusercontent.com/platformsh/cli/main/installer.sh | bash
 
     deploy: |
         set -e

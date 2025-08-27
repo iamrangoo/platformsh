@@ -1,16 +1,10 @@
 # Each route describes how an incoming URL is going to be processed by Platform.sh.
-"https://www.{default}/":
+"https://{default}/":
     type: upstream
     upstream: "app:http"
+    cache:
+        enabled: false
 
-"https://{default}/":
+"https://www.{default}/":
     type: redirect
-    to: "https://www.{default}/"
-
-"https://bbc.new-branch-5uumuga-gwsfl4vu7bocy.eu-3.platformsh.site":
-    type: redirect
-    to: "https://www.maz.ca/"
-
-"https://blueberrycloud.ca":
-    type: redirect
-    to: "https://www.blueberrycloud.ca/"
+    to: "https://{default}/"
