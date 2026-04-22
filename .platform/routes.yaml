@@ -5,7 +5,7 @@
     cache:
         enabled: false
 
-"https://uat.multi-app-k5pinba-gwsfl4vu7bocy.eu-3.platformsh.site/web2/":
+"https://uat2.multi-app-k5pinba-gwsfl4vu7bocy.eu-3.platformsh.site/web2/":
     type: upstream
     upstream: "app2:http"
     cache:
