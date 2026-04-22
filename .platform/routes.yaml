@@ -1,11 +1,11 @@
 # Each route describes how an incoming URL is going to be processed by Platform.sh.
-"https://uat.multi-app-k5pinba-gwsfl4vu7bocy.eu-3.platformsh.site/":
+"https://uat.stalk.exchange/":
     type: upstream
     upstream: "app:http"
     cache:
         enabled: false
 
-"https://uat2.multi-app-k5pinba-gwsfl4vu7bocy.eu-3.platformsh.site/web2/":
+"https://uat2.stalk.exchange/":
     type: upstream
     upstream: "app2:http"
     cache:
