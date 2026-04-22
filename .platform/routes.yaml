@@ -1,17 +1,17 @@
 # Each route describes how an incoming URL is going to be processed by Platform.sh.
-"https://{default}/":
+"https://uat.multi-app-k5pinba-gwsfl4vu7bocy.eu-3.platformsh.site/":
     type: upstream
     upstream: "app:http"
     cache:
         enabled: false
 
-"https://{default}/web2":
+"https://uat.multi-app-k5pinba-gwsfl4vu7bocy.eu-3.platformsh.site/web2":
     type: upstream
     upstream: "app2:http"
     cache:
         enabled: false
 
-"https://uat.manufacturing.stalk.exchange/yada/":
+"https://uat.manufacturing.multi-app-k5pinba-gwsfl4vu7bocy.eu-3.platformsh.site/yada/":
     type: upstream
     upstream: "app:http"
     cache:
