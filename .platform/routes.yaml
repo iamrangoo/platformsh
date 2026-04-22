@@ -5,7 +5,7 @@
     cache:
         enabled: false
 
-"https://uat.{default}/web2":
+"https://{default}/web2":
     type: upstream
     upstream: "app2:http"
     cache:
