@@ -5,7 +5,7 @@
     cache:
         enabled: false
 
-"https://uat2.stalk.exchange/":
+"https://uat.stalk.exchange/web2":
     type: upstream
     upstream: "app2:http"
     cache:
