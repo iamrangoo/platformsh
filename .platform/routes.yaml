@@ -10,3 +10,9 @@
     upstream: "app2:http"
     cache:
         enabled: false
+
+"https://uat.manufacturing.stalk.exchange/yada/":
+    type: upstream
+    upstream: "app:http"
+    cache:
+        enabled: false
